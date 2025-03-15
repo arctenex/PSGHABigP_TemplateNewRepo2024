@@ -1,9 +1,9 @@
 name: build-test-deploy
 on: push
-jobs: 
-  build:    
-    runs-on: ubuntu-22.04 
-    steps: 
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
       - name: checkout repo
         uses: actions/checkout@v4
       - name: use node.js
@@ -16,7 +16,7 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-22.04
-    steps: 
+    steps:
       - name: checkout repo
         uses: actions/checkout@v4
       - name: use node.js
@@ -32,8 +32,8 @@ jobs:
 
     permissions:
       contents: write
-      pages: write     
-      id-token: write  
+      pages: write
+      id-token: write
 
     environment:
       name: production
@@ -50,15 +50,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      - name: configure github_pages
+      - name: configure GiHub pages
         uses: actions/configure-pages@v4
         with:
           static_site_generator: next
       - run: npm install
-      - run: npm run build    
+      - run: npm run build
       - name: upload artifacts
         uses: actions/upload-pages-artifact@v3
-        with: 
+        with:
           path: './out'
       - name: deploy
  
