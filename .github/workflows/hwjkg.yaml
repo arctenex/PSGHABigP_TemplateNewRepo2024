@@ -1,14 +1,1 @@
-name: hello-world-jkg
 
-on: push
-
-jobs: 
-  hello-world-jkg-job:
-
-    runs-on: ubuntu-22.04
-
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-      - run: echo "$(cat hello_world.txt)"
-      
